@@ -15,13 +15,12 @@ export default (state=initialState, action) => {
     case 'EXPENSE_UPDATE':
       let {categoryID} = payload;
       let categoryCards = state[categoryID];
-      return categoryCards.map(expense => expense.id === payload.id ? payload : expense)
+      return {....state, [categoryID]: categoryCards.map(expense => expense.id === payload.id ? payload : expense)}
     case 'EXPENSE_DELETE':
       let {categoryID} = payload;
       let categoryCards = state[categoryID];
-    return categoryCards.filter(expense => expense.id !== payload.id)
+    return {...state, [categoryID]: categoryCards.filter(expense => expense.id !== payload.id)}
     default:
       return state;
-
   }
 }
