@@ -25,25 +25,25 @@ class CategoryItem extends React.Component {
         </div>
         <ExpenseForm
           buttonText='add expense'
-          expense={expense}
           category={category}
           onComplete={expenseCreate}
           />
-        <ul className="expenseList">
+        <section>
 
+          {this.props.expenses[category.id].map((item) => {
+            console.log(item);
+            return (
+              <div key={item.id}>
+                <ExpenseItem expense={item}/>
+              </div>
+            )
+          }
+        )}
+      </section>
+    </li>
 
-            {this.props.expenses[category.id].map((item) => {
-              return (
-                <expenseItem
-                  key={item.id}
-                  />
-                )
-              }
-            )}
-          </ul>
-      </li>
-    )
-  }
+  )
+}
 }
 
 const mapStateToProps = (state) => {

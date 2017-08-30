@@ -16,10 +16,9 @@ class DashboardContainer extends React.Component {
         <ul className="categoryList">
           {this.props.categories.map((item) => {
             return (
-              <CategoryItem
-                key={item.id}
-                category={item}
-                />
+              <div key={item.id}>
+                <CategoryItem category={item}/>
+              </div>
               )
             }
           )}
