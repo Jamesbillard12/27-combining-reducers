@@ -9,7 +9,6 @@ import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-
 
 class CategoryItem extends React.Component {
   render() {
-    console.log(this.props.expenses);
     let {category, categoryUpdate, categoryDelete, expenseCreate, expense} = this.props;
     return(
       <li>
@@ -34,7 +33,10 @@ class CategoryItem extends React.Component {
             console.log(item);
             return (
               <ul key={item.id}>
-                <ExpenseItem expense={item}/>
+                <ExpenseItem
+                  expense={item}
+                  category={category}
+                  />
               </ul>
             )
           }
