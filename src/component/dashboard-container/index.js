@@ -19,8 +19,6 @@ class DashboardContainer extends React.Component {
               <CategoryItem
                 key={item.id}
                 category={item}
-                categoryDelete={this.props.categoryDelete}
-                categoryUpdate={this.props.categoryUpdate}
                 />
               )
             }
