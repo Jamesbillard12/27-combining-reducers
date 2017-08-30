@@ -2,12 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import CategoryForm from '../category-form';
 import ExpenseForm from '../expense-form';
+import ExpenseItem from '../expense-item';
 import {categoryUpdate, categoryDelete} from '../../action/category-actions.js';
 import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-actions.js'
 
 
 class CategoryItem extends React.Component {
   render() {
+    console.log(this.props.expenses);
     let {category, categoryUpdate, categoryDelete, expenseCreate, expense} = this.props;
     return(
       <li>
@@ -27,12 +29,28 @@ class CategoryItem extends React.Component {
           category={category}
           onComplete={expenseCreate}
           />
+        <ul className="expenseList">
+
+
+            {this.props.expenses[category.id].map((item) => {
+              return (
+                <expenseItem
+                  key={item.id}
+                  />
+                )
+              }
+            )}
+          </ul>
       </li>
     )
   }
 }
 
-let mapStateToProps = () =>({});
+const mapStateToProps = (state) => {
+  return {
+    expenses: state.expenses
+  }
+}
 
 let mapDispatchToProps = dispatch => ({
   categoryUpdate: (category) => dispatch(categoryUpdate(category)),
