@@ -44,7 +44,6 @@ describe('Category Reducer', () => {
     }
 
     let firstResult = categoryReducer([], action);
-    console.log(firstResult);
 
     let actionTwo = {
       type: 'CATEGORY_UPDATE',
@@ -57,8 +56,35 @@ describe('Category Reducer', () => {
     }
 
     let result = categoryReducer(firstResult, actionTwo);
-    console.log(result);
     expect(result.length).toBe(1);
     expect(result[0]).toBe(actionTwo.payload)
   })
+
+  test('CATEGORY_DELETE should DELETE a category from the categories array', () => {
+    let action = {
+      type: 'CATEGORY_CREATE',
+      payload: {
+        id: '123',
+        title: 'some title',
+        budget: 'some budget',
+        timestamp: 'some timestamp'
+      }
+    }
+
+    let firstResult = categoryReducer([], action);
+
+    let actionTwo = {
+      type: 'CATEGORY_DELETE',
+      payload: {
+        id: '123',
+        title: 'some title',
+        budget: 'some budget',
+        timestamp: 'some timestamp'
+      }
+    }
+
+    let result = categoryReducer(firstResult, actionTwo);
+    expect(result.length).toBe(0);
+  })
+
 });
