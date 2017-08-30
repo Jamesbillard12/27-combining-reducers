@@ -37,7 +37,6 @@ class CategoryItem extends React.Component {
                 <ExpenseItem
                   key={item.id}
                   expense={item}
-                  card={card}
                   />
               )
             })}

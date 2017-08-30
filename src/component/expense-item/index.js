@@ -7,6 +7,7 @@ import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-
 class ExpenseItem extends React.Component {
   render() {
     let {expenseUpdate, expenseDelete, expense, category} = this.props;
+    console.log(expense);
     return(
       <li>
         <h2>{expense.title}</h2>
@@ -15,8 +16,6 @@ class ExpenseItem extends React.Component {
         <div className='editing'>
           <ExpenseForm
             buttonText='update expense'
-            category={category}
-            expense={expense}
             onComplete={expenseUpdate}
             />
         </div>
@@ -26,7 +25,6 @@ class ExpenseItem extends React.Component {
 }
 
 let mapStateToProps = () =>({});
-
 let mapDispatchToProps = dispatch => ({
   expenseUpdate: (expense) => dispatch(expenseUpdate(expense)),
   expenseDelete: (expense) => dispatch(expenseDelete(expense)),
