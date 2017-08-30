@@ -19,11 +19,46 @@ describe('Category Reducer', () => {
   test('CATEGORY_CREATE should append a category to the categories array', () => {
     let action = {
       type: 'CATEGORY_CREATE',
-      payload: 'sample payload'
+      payload: {
+        id: '123',
+        title: 'some title',
+        budget: 'some budget',
+        timestamp: 'some timestamp'
+      }
     }
 
     let result = categoryReducer([], action);
     expect(result.length).toBe(1);
     expect(result[0]).toBe(action.payload);
   });
+
+  test('CATEGORY_UPDATE should replace a category in the categories array', () => {
+    let action = {
+      type: 'CATEGORY_CREATE',
+      payload: {
+        id: '123',
+        title: 'some title',
+        budget: 'some budget',
+        timestamp: 'some timestamp'
+      }
+    }
+
+    let firstResult = categoryReducer([], action);
+    console.log(firstResult);
+
+    let actionTwo = {
+      type: 'CATEGORY_UPDATE',
+      payload: {
+        id: '123',
+        title: 'some new title',
+        budget: 'some new budget',
+        timestamp: 'some new timestamp'
+      }
+    }
+
+    let result = categoryReducer(firstResult, actionTwo);
+    console.log(result);
+    expect(result.length).toBe(1);
+    expect(result[0]).toBe(actionTwo.payload)
+  })
 });
