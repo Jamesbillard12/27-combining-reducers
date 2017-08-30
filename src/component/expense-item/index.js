@@ -10,7 +10,7 @@ class ExpenseItem extends React.Component {
     return(
       <li>
         <h2>{expense.title}</h2>
-        <h3>{expense.budget}</h3>
+        <h3>{expense.price}</h3>
         <button className='deleteButton' onClick={()=>expenseDelete(expense)}>x</button>
         <div className='editing'>
           <ExpenseForm

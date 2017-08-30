@@ -33,9 +33,9 @@ class CategoryItem extends React.Component {
           {this.props.expenses[category.id].map((item) => {
             console.log(item);
             return (
-              <div key={item.id}>
+              <ul key={item.id}>
                 <ExpenseItem expense={item}/>
-              </div>
+              </ul>
             )
           }
         )}
