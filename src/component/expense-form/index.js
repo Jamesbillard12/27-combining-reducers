@@ -32,17 +32,13 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('%%%%%%%%%%%%', this.props.expense);
-    console.log('###########', this.props.category);
     let expense = Object.assign({}, this.state);
     expense.categoryID = this.props.category.id
     if(this.props.expense) {
-      console.log('hello');
       expense.id = this.props.expense.id;
       expense.timestamp = this.props.expense.timestamp;
       expense.timestamp = new Date();
     }
-    console.log(expense);
     this.props.onComplete(expense);
   }
 

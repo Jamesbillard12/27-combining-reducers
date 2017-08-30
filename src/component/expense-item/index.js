@@ -7,7 +7,6 @@ import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-
 class ExpenseItem extends React.Component {
   render() {
     let {expenseUpdate, expenseDelete, expenseCreate, expense, category} = this.props;
-    console.log('***********', category);
     return(
       <li>
         <h2>{expense.title}</h2>

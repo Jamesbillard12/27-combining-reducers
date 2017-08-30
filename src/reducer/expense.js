@@ -9,7 +9,6 @@ export default (state=initialState, action) => {
     case 'CATEGORY_DELETE':
       return {...state, [payload.id] : undefined};
     case 'EXPENSE_CREATE': {
-      console.log(payload);
       let {categoryID} = payload;
       let categoryCards = state[categoryID];
       return {...state, [categoryID]: [...categoryCards, payload]}

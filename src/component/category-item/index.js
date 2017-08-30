@@ -30,7 +30,6 @@ class CategoryItem extends React.Component {
         <section>
 
           {this.props.expenses[category.id].map((item) => {
-            console.log(item);
             return (
               <ul key={item.id}>
                 <ExpenseItem
