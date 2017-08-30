@@ -27,13 +27,12 @@ class CategoryItem extends React.Component {
         <ExpenseForm
           buttonText='add expense'
           categoryID={category.id}
-          category={category}
           onComplete={expenseCreate}
           />
         <section>
 
           <ul>
-            {expenses[category.id].map((item) => {
+            {expenses.map((item) => {
               return (
                 <ExpenseItem
                   key={item.id}
@@ -49,7 +48,7 @@ class CategoryItem extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
     expenses: state.expenses[props.category.id]
   }
