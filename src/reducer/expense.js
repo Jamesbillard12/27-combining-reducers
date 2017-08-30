@@ -6,7 +6,7 @@ let validateCategory = (category) => {
 
 let validateExpense = (expense) => {
   if (!expense.id || !expense.title || !expense.price || !expense.timestamp || !expense.categoryID) {
-    throw new Error('VALIDATION_ERROR: expense must include id, categoryID, title, budget, and timestamp')
+    throw new Error('VALIDATION_ERROR: expense must include id, categoryID, title, price, and timestamp')
   }
 }
 
