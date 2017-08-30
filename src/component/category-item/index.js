@@ -9,7 +9,7 @@ import {expenseUpdate, expenseDelete, expenseCreate} from '../../action/expense-
 
 class CategoryItem extends React.Component {
   render() {
-    let {category, categoryUpdate, categoryDelete, expenseCreate, expense} = this.props;
+    let {category, categoryUpdate, categoryDelete, expenseCreate, expense, expenses} = this.props;
     return(
       <li>
         <h2>{category.title}</h2>
@@ -29,22 +29,21 @@ class CategoryItem extends React.Component {
           />
         <section>
 
-          {this.props.expenses[category.id].map((item) => {
-            return (
-              <ul key={item.id}>
+          <ul>
+            {expenses[category.id].map((item) => {
+              return (
                 <ExpenseItem
+                  key={item.id}
                   expense={item}
                   category={category}
                   />
-              </ul>
-            )
-          }
-        )}
-      </section>
-    </li>
-
-  )
-}
+              )
+            })}
+          </ul>
+        </section>
+      </li>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
