@@ -26,6 +26,7 @@ class CategoryItem extends React.Component {
         </div>
         <ExpenseForm
           buttonText='add expense'
+          categoryID={category.id}
           category={category}
           onComplete={expenseCreate}
           />
@@ -37,7 +38,7 @@ class CategoryItem extends React.Component {
                 <ExpenseItem
                   key={item.id}
                   expense={item}
-                  category={category}
+                  card={card}
                   />
               )
             })}
@@ -50,7 +51,7 @@ class CategoryItem extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    expenses: state.expenses
+    expenses: state.expenses[props.category.id]
   }
 }
 
