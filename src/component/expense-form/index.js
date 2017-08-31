@@ -4,46 +4,30 @@ class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      title: props.expense ? props.expense.title : '',
-      price: props.expense ? props.expense.price : ''
-    }
+    this.state = props.expense ? {...props.expense} : {title: '', categoryID: props.categoryID, price:''}
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    let {name, value, type} = e.target;
-    if (type === 'number') {
-      try {
-        this.setState({
-          [name]: parseInt(value),
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    } else {
-      this.setState({
-        [name]: value,
-      });
+  componentWillReceiveProps(props) {
+    if (props.expense) {
+      this.setState(props.expense)
     }
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('%%%%%%%%%%%%', this.props.expense);
-    console.log('###########', this.props.category);
-    let expense = Object.assign({}, this.state);
-    expense.categoryID = this.props.category.id
-    if(this.props.expense) {
-      console.log('hello');
-      expense.id = this.props.expense.id;
-      expense.timestamp = this.props.expense.timestamp;
-      expense.timestamp = new Date();
+    this.props.onComplete(this.state);
+    if(!this.props.expense) {
+      this.setState({ content: '' })
     }
-    console.log(expense);
-    this.props.onComplete(expense);
   }
 
   render() {
@@ -53,7 +37,7 @@ class ExpenseForm extends React.Component {
           name='title'
           type='text'
           placeholder='title'
-          value={this.state.title}
+          value={this.state.value}
           onChange={this.handleChange}
           />
 
@@ -61,7 +45,7 @@ class ExpenseForm extends React.Component {
           name='price'
           type='number'
           placeholder='price'
-          value={this.state.price}
+          value={this.state.value}
           onChange={this.handleChange}
           />
 
